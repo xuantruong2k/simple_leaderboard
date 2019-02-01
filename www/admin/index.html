@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Admin</title>
+	<link rel="stylesheet" href="css/admin.css">
+	<script type="text/javascript" src="./../../node_modules/jquery/dist/jquery.min.js"></script>
+	<style>
+		table, th, td {
+			border: 1px solid black;
+			border-collapse: collapse;
+			text-align: center;
+		}
+		th {
+			padding: 5px 5px 5px 5px;
+			background-color: #d4d4d4;
+		}
+	</style>
+</head>
+
+<body onload="onload()">
+	<!-- control button -->
+	<div>
+		<button id="lbBtn" onclick="showLeaderBoard()">Update leaderboard</button>
+		<br>
+		<br>
+	</div>
+	<div>
+		<div>
+			<table id="lbTable" class="lbtable">
+			</table>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/admin.js"></script>
+	<script type="text/javascript">
+		function onload() {
+			$("#lbBtn").click();
+		}
+	</script>
+</body>
+
+</html>
