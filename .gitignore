@@ -1,0 +1,6 @@
+.project
+.buildpath
+.settings/
+.env
+package-lock.json
+node_modules/
