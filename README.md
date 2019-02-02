@@ -15,7 +15,8 @@
     > www/admin/index.html
 5. The client page is locate on:
     > www/client/index.html
-
+---
+## Task summary
 **Tasks has NOT finished**
 1. As a user I should be able to add / ~~update~~ a username and a score.
 2. ~~As a user I should be able to receive updates pushed to my screen when another user adds/updates their score.~~
@@ -23,7 +24,7 @@
 4. ~~As an administrator I should be able to see how many times a user updated their score.~~
 5. As an administrator I should be able to delete a username and score.
 
-**Task has finishd**
+**Task has finished**
 + As a user I should be able to add a username and a score.
 + As an administrator I should be able to delete a username and score.
 
@@ -32,6 +33,7 @@
 + I implement the websocket but haven't notify other users yet.
 + The database is not suitable to know how many users updated their score in a time windows
 
+---
 ## Solution for unfinished tasks
 1. correct the PUT method -> update user -> be able to count how many times a user updated their score
 2. Add table leaderboard_log
