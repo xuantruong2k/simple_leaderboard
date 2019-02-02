@@ -14,5 +14,5 @@ module.exports = function(app) {
     .delete(userCtrl.delete);
 
   app.route('/leaderboard')
-    .get(userCtrl.top)
+    .get(userCtrl.top);
 };

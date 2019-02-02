@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Client</title>
+	<link rel="stylesheet" href="css/client.css">
+	<script type="text/javascript" src="./../../node_modules/jquery/dist/jquery.min.js"></script>
+	<style>
+		table, th, td {
+      padding: 5px 5px 5px 5px;
+		}
+	</style>
+</head>
+
+<body onload="onload()">
+	<!-- add new user -->
+	<div class="update-user">
+    <table>
+      <tr>
+        <td><span>Username: </span></td>
+        <td><input type="text" id="inputUsername"></td>
+      </tr>
+      <tr>
+        <td><span>Score: </span></td>
+        <td><input type="number" id="inputScore"></td>
+      </tr>
+      <tr>
+        <td>
+          <button id="addNewBtn" onclick="handleAdd()">Add new</button>
+        </td>
+        <td>
+          <button id="updateBtn" onclick="handleUpdate()">Update</button>
+        </td>
+      </tr>
+    </table>
+	</div>
+
+	<!-- leader board -->
+	<div>
+		<p>
+      <br>
+      ---------------------------------------------------
+      <br>
+      <b>Leader Board</b>
+			<table id="lbTable" class="lbtable">
+			</table>
+		</p>
+	</div>
+
+	<script type="text/javascript" src="js/client.js"></script>
+	<script type="text/javascript">
+		function onload() {
+			showLeaderBoard();
+		}
+	</script>
+</body>
+
+</html>

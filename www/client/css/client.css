@@ -1,0 +1,23 @@
+
+.lbtable-header {
+  background-color: #a8a5a8;
+  font-weight: bold;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.update-user {
+  border: 1px solid black;
+  width: 300px;
+  padding: 10px 10px 10px 10px;
+}
+
+.padding4 {
+  padding: 10px 10px 10px 10px;
+}
+
+.leaderboard {
+  border: 1px solid black;
+}
+
+

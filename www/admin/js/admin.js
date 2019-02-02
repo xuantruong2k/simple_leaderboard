@@ -2,6 +2,7 @@
 const SERVER = "http://localhost:3000";
 const URL_LEADERBOARD = SERVER + "/leaderboard";
 const URL_DELETE_USER = SERVER + "/users/";
+const URL_PUT_USER = SERVER + "/users/";
 
 function httpGet(theUrl, callbackSucess, callbackError) {
   $.ajax({
@@ -45,11 +46,10 @@ function httpPut(theUrl, data, callbackSuccess, callbackError) {
     error: callbackError,
     dataType: "json",
     crossDomain: true
-  })
+  });
 }
 
 function showLeaderBoard() {
-  
   httpGet(URL_LEADERBOARD, function(data) {
     // success
     console.log(data);
@@ -59,9 +59,7 @@ function showLeaderBoard() {
   }, function(data) {
     // error
     console.log("show leaderboard error!");
-  });
-
-  
+  });  
 }
 
 function createLeaderBoardTable(lbData) {
@@ -78,10 +76,8 @@ function createLeaderBoardTable(lbData) {
 }
 
 function handleDelete(username) {
-  console.log(username);
-  let data = {username};
-  // let data = {};
-  // data['username'] = username;
+  let data = {};
+  data['username'] = username;
   httpDelete(URL_DELETE_USER + username, data, function(data) {
     // success
     console.log("success delete");

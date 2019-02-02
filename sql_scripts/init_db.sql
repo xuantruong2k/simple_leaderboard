@@ -13,6 +13,18 @@ INSERT INTO `leaderboard` VALUES('ted', '2019', 0);
 INSERT INTO `leaderboard` VALUES('james', '120', 0);
 INSERT INTO `leaderboard` VALUES('jennifer', '432', 0);
 INSERT INTO `leaderboard` VALUES('britney', '200', 0);
+INSERT INTO `leaderboard` VALUES('pooh', '1205', 0);
+INSERT INTO `leaderboard` VALUES('bear', '636', 0);
+INSERT INTO `leaderboard` VALUES('donnie', '54', 0);
+INSERT INTO `leaderboard` VALUES('mark', '3234', 0);
 
 -- CREATE USER 'test'@'%' IDENTIFIED BY 'p@ssword!';
 -- GRANT ALL PRIVILEGES ON simple_rest_api.* TO 'test'@'localhost';
+
+-- CREATE TABLE `leaderboard_log` (
+--   `username` varchar(8) NOT NULL,
+--   `old_score` bigint DEFAULT 0,
+--   `new_score` bigint DEFAULT 0,
+--   `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
+--   FOREIGN KEY (username) REFERENCES leaderboard(username)
+-- ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;

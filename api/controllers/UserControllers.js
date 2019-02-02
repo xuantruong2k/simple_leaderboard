@@ -21,9 +21,15 @@ module.exports = {
     });
   },
   update: (req, res) => {
+    // let sql = 'UPDATE leaderboard SET ? WHERE username = ?';
     let sql = 'UPDATE leaderboard SET ?, update_counter=update_counter+1 WHERE username = ?';
     let data = req.body;
+    // let score = data['score'];
     let username = req.params.username;
+    // let score = req.params.score;
+    // console.log("useranme: " + username);
+    // console.log("score: " + score);
+    // db.query(sql, [username, username, score, score, username], (err, response) => {
     db.query(sql, [data, username], (err, response) => {
       if (err) throw err;
       res.json({message: 'Update success!'});
@@ -31,6 +37,7 @@ module.exports = {
   },
   store: (req, res) => {
     let sql = 'INSERT INTO leaderboard SET ? ';
+    // sql = 'INSERT INTO leaderboard_log SET '
     let data = req.body;
     db.query(sql, [data], (err, response) => {
       if (err) throw err;
