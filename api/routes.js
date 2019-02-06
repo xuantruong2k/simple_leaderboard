@@ -1,18 +1,18 @@
 'use strict';
 
 module.exports = function(app) {
-  let userCtrl = require('./controllers/UserControllers');
+  let lbCtrl = require('./controllers/LeaderboardControllers');
 
   // routes
   app.route('/users')
-    .get(userCtrl.get)
-    .post(userCtrl.store);
+    .get(lbCtrl.get)
+    .post(lbCtrl.store);
 
   app.route('/users/:username')
-    .get(userCtrl.detail)
-    .put(userCtrl.update)
-    .delete(userCtrl.delete);
+    .get(lbCtrl.detail)
+    .post(lbCtrl.update)
+    .delete(lbCtrl.delete);
 
   app.route('/leaderboard')
-    .get(userCtrl.top);
+    .get(lbCtrl.topLB);
 };

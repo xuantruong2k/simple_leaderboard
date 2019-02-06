@@ -35,6 +35,8 @@ function httpPut(theUrl, data, callbackSuccess, callbackError) {
     success: callbackSuccess,
     error: callbackError,
     dataType: "json",
+    contentType: "application/json",
+    // data: JSON.stringify({'username': username, 'score': score}),
     crossDomain: true
   })
 }
@@ -72,6 +74,7 @@ function addUser(username, score) {
   httpPost(URL_POST_USER, data, function(data) {
     // success
     console.log("success insert");
+    showLeaderBoard(); // update the leader board
   }, function(data) {
     // fail
     console.log("insert error");
@@ -82,9 +85,11 @@ function updateUser(username, score) {
   let data = {};
   data['username'] = username;
   data['score'] = score;
-  httpPut(URL_PUT_USER + username, data, function(data) {
+  httpPost(URL_PUT_USER + username, data, function(data) {
+  // httpPut(URL_PUT_USER + username, data, function(data) {
     // success
     console.log("success update");
+    showLeaderBoard(); // update the leader board
   }, function(data) {
     // fail
     console.log("update error");
@@ -124,9 +129,7 @@ function handleUpdate() {
     return;
   }
 
-  alert("Sorry! I haven't handle that");
-
-  // updateUser(username, score);
+  updateUser(username, score);
 }
 
 

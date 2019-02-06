@@ -59,16 +59,20 @@ function showLeaderBoard() {
   }, function(data) {
     // error
     console.log("show leaderboard error!");
-  });  
+  });
 }
 
 function createLeaderBoardTable(lbData) {
-  let table = "<tr><th>username</th><th>score</th><th>control</th></tr>";
+  let table = "<tr><th>username</th><th>score</th><th>update counter</th><th></th></tr>";
   for (let i = 0; i < lbData.length; i++) {
     let user = lbData[i];
-    table += "<tr id='" + user['username'] + "'>";
+    if (i%2 == 1)
+      table += "<tr class='color-row' id='" + user['username'] + "'>";
+    else
+      table += "<tr id='" + user['username'] + "'>";
     table += "<td>" + user['username'] + "</td>";
     table += "<td>" + user['score'] + "</td>";
+    table += "<td>" + user['update_counter'] + "</td>";
     table += "<td><button id='" + user['username'] + "' onclick='handleDelete(this.id)'>Delete</button></td>";
     table += "</tr>";
   }
