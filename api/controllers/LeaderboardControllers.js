@@ -24,23 +24,28 @@ module.exports = {
   },
   // update record
   update: (req, res) => {
-    let sql = 'UPDATE leaderboard SET score = ?, update_counter=update_counter+1 WHERE username = ?';
     let data = req.body;
-    // let score = data['score'];
+    let score = data['score'];
     let username = req.params.username;
-    db.query(sql, [data, username], (err, response) => {
+    // 2 queries here: insert into log table first
+    // then update the main leaderboard table
+    let sql = 'INSERT INTO leaderboard_log(username, old_score, new_score) VALUE(?, (SELECT score FROM leaderboard WHERE username = ?), ?);';
+    sql += 'UPDATE leaderboard SET score = ?, update_counter=update_counter+1 WHERE username = ?;';
+    db.query(sql, [username, username, score, score, username], (err, response) => {
       if (err) throw err;
-      res.json({message: 'Update success!'});
+      res.json({message: 'Insert LOG success!'});
     });
   },
   // add new record
   store: (req, res) => {
-    let sql = 'INSERT INTO leaderboard(username, score) VALUES(?, ?)';
-    // sql = 'INSERT INTO leaderboard_log SET '
     let data = req.body;
     let username = data['username'];
     let score = data['score'];
-    db.query(sql, [username, score], (err, response) => {
+    // 2 queries here: insert into log table first
+    // then update the main leaderboard table
+    let sql = 'INSERT INTO leaderboard(username, score) VALUES(?, ?);';
+    sql += 'INSERT INTO leaderboard_log(username, old_score, new_score) VALUES(?, 0, ?);';
+    db.query(sql, [username, score, username, score], (err, response) => {
       if (err) throw err;
       res.json({message: 'Insert success!'});
     });
