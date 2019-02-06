@@ -1,54 +1,5 @@
 
-const SERVER = "http://localhost:3000";
-const URL_LEADERBOARD = SERVER + "/leaderboard";
-const URL_DELETE_USER = SERVER + "/users/";
-const URL_GET_USER = SERVER + "/users/";
-const URL_GET_DETAIL = SERVER + "/detail";
 
-function httpGet(theUrl, callbackSucess, callbackError) {
-  $.ajax({
-    dataType: "json",
-    url: theUrl,
-    success: callbackSucess,
-    error: callbackError,
-    timeout: 10000,
-    crossDomain: true
-  });
-}
-
-function httpPost(theUrl, data, callbackSucess, callbackError) {
-  $.ajax({
-    type: "POST",
-    url: theUrl,
-    data: data,
-    success: callbackSucess,
-    error: callbackError,
-    dataType: "json",
-    crossDomain: true
-  });
-}
-
-function httpDelete(theUrl, data, callbackSuccess, callbackError) {
-  $.ajax({
-    type: "DELETE",
-    url: theUrl,
-    success: callbackSuccess,
-    error: callbackError,
-    dataType: "json",
-    crossDomain: true
-  });
-}
-
-function httpPut(theUrl, data, callbackSuccess, callbackError) {
-  $.ajax({
-    type: "PUT",
-    url: theUrl,
-    success: callbackSuccess,
-    error: callbackError,
-    dataType: "json",
-    crossDomain: true
-  });
-}
 
 function showLeaderBoard() {
   httpGet(URL_LEADERBOARD, function(data) {
@@ -83,7 +34,7 @@ function createLeaderBoardTable(lbData) {
 function handleDelete(username) {
   let data = {};
   data['username'] = username;
-  httpDelete(URL_DELETE_USER + username, data, function(data) {
+  httpDelete(URL_USER + "/" + username, data, function(data) {
     // success
     console.log("success delete");
     $("#" + username).remove();
@@ -102,7 +53,7 @@ function handleUpdateCounter() {
   
   // need to validate data
 
-  httpPost(URL_GET_DETAIL, data, function(data) {
+  httpPost(URL_UPDATE_DETAIL, data, function(data) {
     $("#counterTxt").val(data['counter']);
   }, function(data) {
     console.log("Error!");

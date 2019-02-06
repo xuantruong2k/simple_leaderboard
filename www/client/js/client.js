@@ -1,45 +1,5 @@
 
-const SERVER = "http://localhost:3000";
-const URL_LEADERBOARD = SERVER + "/leaderboard";
-const URL_DELETE_USER = SERVER + "/users/";
-const URL_PUT_USER = SERVER + "/users/";
-const URL_POST_USER = SERVER + "/users";
 
-function httpGet(theUrl, callbackSucess, callbackError) {
-  $.ajax({
-    dataType: "json",
-    url: theUrl,
-    success: callbackSucess,
-    error: callbackError,
-    timeout: 10000,
-    crossDomain: true
-  });
-}
-
-function httpPost(theUrl, data, callbackSucess, callbackError) {
-  $.ajax({
-    type: "POST",
-    url: theUrl,
-    data: data,
-    success: callbackSucess,
-    error: callbackError,
-    dataType: "json",
-    crossDomain: true
-  });
-}
-
-function httpPut(theUrl, data, callbackSuccess, callbackError) {
-  $.ajax({
-    type: "PUT",
-    url: theUrl,
-    success: callbackSuccess,
-    error: callbackError,
-    dataType: "json",
-    contentType: "application/json",
-    // data: JSON.stringify({'username': username, 'score': score}),
-    crossDomain: true
-  })
-}
 
 function showLeaderBoard() {
   httpGet(URL_LEADERBOARD, function(data) {
@@ -71,7 +31,7 @@ function addUser(username, score) {
   data['username'] = username;
   data['score'] = score;
 
-  httpPost(URL_POST_USER, data, function(data) {
+  httpPost(URL_USER, data, function(data) {
     // success
     console.log("success insert");
     showLeaderBoard(); // update the leader board
@@ -85,8 +45,8 @@ function updateUser(username, score) {
   let data = {};
   data['username'] = username;
   data['score'] = score;
-  httpPost(URL_PUT_USER + username, data, function(data) {
-  // httpPut(URL_PUT_USER + username, data, function(data) {
+  // httpPut(URL_USER + "/" + username, data, function(data) {
+  httpPost(URL_USER + "/" + username, data, function(data) {
     // success
     console.log("success update");
     showLeaderBoard(); // update the leader board
