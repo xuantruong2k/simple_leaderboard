@@ -7,12 +7,16 @@ module.exports = function(app) {
   app.route('/users')
     .get(lbCtrl.get)
     .post(lbCtrl.store);
-
+    
   app.route('/users/:username')
     .get(lbCtrl.detail)
     .post(lbCtrl.update)
     .delete(lbCtrl.delete);
-
+  
   app.route('/leaderboard')
     .get(lbCtrl.topLB);
+  
+  app.route('/detail')
+    .post(lbCtrl.detailCounter);
+
 };

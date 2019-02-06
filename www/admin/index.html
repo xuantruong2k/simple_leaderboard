@@ -20,11 +20,54 @@
 </head>
 
 <body onload="onload()">
+	<div>
+		<table>
+			<tr>
+				<td>
+					<span>Username:</span>					
+				</td>
+				<td>
+					<input type="text" id="userInput">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span>From date (YYYY-MM-DD)</span>
+				</td>
+				<td>
+					<input type="text" id="fromDate">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span>To date (YYYY-MM-DD)</span>
+				</td>
+				<td>
+					<input type="text" id="toDate">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<button id="counterBtn" onclick="handleUpdateCounter()">Update counter</button>
+				</td>
+				<td>
+					<input type="text" id="counterTxt">
+				</td>
+			</tr>
+		</table>
+
+			
+		</div>
+		<br />
+		<br />
+		<br />
+		
+	</div>
 	<!-- control button -->
 	<div>
 		<button id="lbBtn" onclick="showLeaderBoard()">Update leaderboard</button>
-		<br>
-		<br>
+		<br />
+		<br />
 	</div>
 	<div>
 		<div>

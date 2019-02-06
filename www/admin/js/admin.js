@@ -2,7 +2,8 @@
 const SERVER = "http://localhost:3000";
 const URL_LEADERBOARD = SERVER + "/leaderboard";
 const URL_DELETE_USER = SERVER + "/users/";
-const URL_PUT_USER = SERVER + "/users/";
+const URL_GET_USER = SERVER + "/users/";
+const URL_GET_DETAIL = SERVER + "/detail";
 
 function httpGet(theUrl, callbackSucess, callbackError) {
   $.ajax({
@@ -86,7 +87,26 @@ function handleDelete(username) {
     // success
     console.log("success delete");
     $("#" + username).remove();
+    showLeaderBoard(); // update leader boad after remove a user
   }, function(data) {
     console.log("delete error!");
   });
+}
+
+function handleUpdateCounter() {
+  let data = {};
+  data['fromDate'] = $("#fromDate").val();
+  data['toDate'] = $("#toDate").val();
+  data['username'] = $("#userInput").val();
+  console.log("handleUpdateCounter - data: " + data['fromDate'] + ", " + data['toDate'] + ", " + data['username']);
+  
+  // need to validate data
+
+  httpPost(URL_GET_DETAIL, data, function(data) {
+    $("#counterTxt").val(data['counter']);
+  }, function(data) {
+    console.log("Error!");
+  });
+
+
 }

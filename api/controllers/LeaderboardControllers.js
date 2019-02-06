@@ -66,5 +66,21 @@ module.exports = {
       if (err) throw err;
       res.json(response);
     });
+  },
+  // get the update counter of a user
+  detailCounter: (req, res) => {
+    let data = req.body;
+    let fromDate = data['fromDate'];
+    let toDate = data['toDate'];
+    let username = data['username'];
+    console.log("body: " + data);
+    console.log("json: " + JSON.stringify(data));
+    console.log("---- detail counter: " + fromDate + ", " + toDate + ", " + username);
+    let sql = 'SELECT count(id) as counter FROM leaderboard_log WHERE username = ? AND updated_at >= TIMESTAMP(?) AND updated_at < TIMESTAMP(?)';
+    db.query(sql, [username, fromDate, toDate], (err, response) => {
+      if (err) throw err;
+      console.log("response: " + response);
+      res.json(response[0]);
+    });
   }
 }
