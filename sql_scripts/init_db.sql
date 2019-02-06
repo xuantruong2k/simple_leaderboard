@@ -11,7 +11,7 @@ GRANT ALL PRIVILEGES ON simple_rest_api.* TO 'test'@'localhost';
 CREATE TABLE `leaderboard` (
   `username` varchar(8) NOT NULL,
   `score` bigint DEFAULT 0,
-  `update_counter` int DEFAULT 0,
+  `update_counter` int DEFAULT 1,
   PRIMARY KEY(`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
@@ -26,14 +26,14 @@ CREATE TABLE `leaderboard` (
  ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1; 
      
  -- insert sample data
-INSERT INTO `leaderboard` VALUES('ted', 2019, 0);
-INSERT INTO `leaderboard` VALUES('james', 120, 0);
-INSERT INTO `leaderboard` VALUES('jennifer', 432, 0);
-INSERT INTO `leaderboard` VALUES('britney', 200, 0);
-INSERT INTO `leaderboard` VALUES('pooh', 1205, 0);
-INSERT INTO `leaderboard` VALUES('bear', 636, 0);
-INSERT INTO `leaderboard` VALUES('donnie', 54, 0);
-INSERT INTO `leaderboard` VALUES('mark', 3234, 0);
+INSERT INTO `leaderboard` VALUES('ted', 2019, 1);
+INSERT INTO `leaderboard` VALUES('james', 120, 1);
+INSERT INTO `leaderboard` VALUES('jennifer', 432, 1);
+INSERT INTO `leaderboard` VALUES('britney', 200, 1);
+INSERT INTO `leaderboard` VALUES('pooh', 1205, 1);
+INSERT INTO `leaderboard` VALUES('bear', 636, 1);
+INSERT INTO `leaderboard` VALUES('donnie', 54, 1);
+INSERT INTO `leaderboard` VALUES('mark', 3234, 1);
 
 INSERT INTO `leaderboard_log`(`username`, `old_score`, `new_score`) VALUES('ted', 0, 2019);
 INSERT INTO `leaderboard_log`(`username`, `old_score`, `new_score`) VALUES('james', 0, 120);
