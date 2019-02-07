@@ -16,15 +16,29 @@
 5. The client page is locate on:
     > www/client/index.html
 ---
+**LOG CHANGES**
+
+> ## Update February 8th, 2019
+**Tasks have NOT been finished**
++ 2. As a user I should be able to receive updates pushed to my screen when another user adds/updates their score.
+
+**Tasks have been finished**
++ 1. As a user I should be able to add / ~~update~~ a username and a score.
++ 3. As an administrator I should be able to see how many users updated their score in a time window.
++ 4. As an administrator I should be able to see how many times a user updated their score.
++ 5. As an administrator I should be able to delete a username and score.
+
+---
+> ## Update on February 2nd, 2019
 ## Task summary
-**Tasks has NOT finished**
+**Tasks have NOT been finished**
 1. As a user I should be able to add / ~~update~~ a username and a score.
 2. ~~As a user I should be able to receive updates pushed to my screen when another user adds/updates their score.~~
 3. ~~As an administrator I should be able to see how many users updated their score in a time window.~~
 4. ~~As an administrator I should be able to see how many times a user updated their score.~~
 5. As an administrator I should be able to delete a username and score.
 
-**Task has finished**
+**Tasks have been finished**
 + As a user I should be able to add a username and a score.
 + As an administrator I should be able to delete a username and score.
 
