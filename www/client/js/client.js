@@ -122,6 +122,8 @@ client.onclose = function() {
 client.onmessage = function(e) {
   if (typeof e.data === 'string') {
     console.log("Received: '" + e.data + "'");
+    console.log("show leaderboard");
+    showLeaderBoard();
   }
 }
 

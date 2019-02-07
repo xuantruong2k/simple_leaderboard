@@ -7,13 +7,27 @@
 	<link rel="stylesheet" href="css/client.css">
 	<script type="text/javascript" src="./../../node_modules/jquery/dist/jquery.min.js"></script>
 	<style>
-		table, th, td {
+		div.update-user table, div.update-user th, div.update-user td {
       padding: 5px 5px 5px 5px;
 		}
+
+		div.leaderboard table, div.leaderboard th, div.leaderboard td {
+			border: 1px solid black;
+			border-collapse: collapse;
+			text-align: center;
+		}
+		div.leaderboard th {
+			padding: 5px 5px 5px 5px;
+			background-color: #d4d4d4;
+		}
+
 	</style>
 </head>
 
 <body onload="onload()">
+	<div>
+		<h2>--- Client page ---</h2>
+	</div>
 	<!-- add new user -->
 	<div class="update-user">
     <table>
@@ -37,7 +51,7 @@
 	</div>
 
 	<!-- leader board -->
-	<div>
+	<div class="leaderboard">
 		<p>
       <br>
       ---------------------------------------------------

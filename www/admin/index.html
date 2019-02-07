@@ -7,12 +7,12 @@
 	<link rel="stylesheet" href="css/admin.css">
 	<script type="text/javascript" src="./../../node_modules/jquery/dist/jquery.min.js"></script>
 	<style>
-		table, th, td {
+		div.leaderboard table, div.leaderboard th, div.leaderboard td {
 			border: 1px solid black;
 			border-collapse: collapse;
 			text-align: center;
 		}
-		th {
+		div.leaderboard th {
 			padding: 5px 5px 5px 5px;
 			background-color: #d4d4d4;
 		}
@@ -20,6 +20,9 @@
 </head>
 
 <body onload="onload()">
+	<div>
+		<h1>--- ADMIN page ---</h1>
+	</div>
 	<div>
 		<table>
 			<tr>
@@ -48,7 +51,7 @@
 			</tr>
 			<tr>
 				<td>
-					<button id="counterBtn" onclick="handleUpdateCounter()">Update counter</button>
+					<button id="counterBtn" onclick="handleUpdateCounter()">Query update counter</button>
 				</td>
 				<td>
 					<input type="text" id="counterTxt">
@@ -69,7 +72,7 @@
 		<br />
 		<br />
 	</div>
-	<div>
+	<div class="leaderboard">
 		<div>
 			<table id="lbTable" class="lbtable">
 			</table>
