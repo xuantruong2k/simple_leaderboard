@@ -3,7 +3,7 @@
 // const util = require('util');
 // const mysql = require('mysql');
 const db = require('../db.js');
-// let wsServer = require('../websocketServer.js');
+let wsServer = require('../websocketServer.js');
 
 module.exports = {
   // get all
@@ -46,8 +46,11 @@ module.exports = {
         console.log("" + err);
       } else {
         res.json({message: 'Insert LOG success!'});
+        // send message 2 client to inform about new updated
+        let msg = "UPDATE! <b>" + username + "</b> has updated his/her score <b>" + score + "</b>";
+        wsServer.sendMsg2Client(msg);
+
       }
-      // wsServer.sendMsg2Client();
     });
   },
   // add new record
@@ -65,6 +68,8 @@ module.exports = {
         console.log("" + err);
       } else {
         res.json({message: 'Insert success!'});
+        let msg = "ADD! <b>" + username + "</b> with score <b>" + score +"</b> has just added to leaderboard!";
+        wsServer.sendMsg2Client(msg);
       }
     });
   },

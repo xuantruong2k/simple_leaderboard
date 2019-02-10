@@ -15,3 +15,15 @@
 .padding4 {
   padding: 10px 10px 10px 10px;
 }
+
+.myAlert-top {
+  position: fixed;
+  top: 5px;
+  left: 0%;
+  width: 100%;
+  background-color: cyan;
+}
+
+.alert {
+  display: none;
+}

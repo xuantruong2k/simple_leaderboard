@@ -49,16 +49,16 @@ wsServer.on('request', function(request) {
   socketConn.on('close', function(reasonCode, description) {
     console.log((new Date()) + ' Peer ' + socketConn.remoteAddress + ' disconnected.');
   });
+
 });
 
 
 module.exports = {
-  sendMsg2Client: function() {
+  sendMsg2Client: function(msg) {
     if (socketConn != null) {
-      console.log("AAAAA");
       socketConn.sendUTF(msg);
     }
   }
 };
 
-module.exports = wsServer;
+// module.exports.wsServer = wsServer;

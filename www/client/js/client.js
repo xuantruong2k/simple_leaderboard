@@ -92,6 +92,13 @@ function handleUpdate() {
   updateUser(username, score);
 }
 
+function showInforMsg(msg) {
+  $(".myAlert-top").show();
+  $("#alertMsgId").html(msg);
+  setTimeout(function() {
+    $(".myAlert-top").hide();
+  }, 2000);
+}
 
 
 // ----------------------------------------------------------------------
@@ -105,14 +112,14 @@ client.onerror = function() {
 client.onopen = function() {
   console.log('web socket client connected');
 
-  function sendNumber() {
-    if (client.readyState === client.OPEN) {
-      let number = Math.round(Math.random() * 0xFFFFFF);
-      client.send(number.toString());
-      setTimeout(sendNumber, 3000);
-    }
-  }
-  sendNumber();
+  // function sendNumber() {
+  //   if (client.readyState === client.OPEN) {
+  //     let number = Math.round(Math.random() * 0xFFFFFF);
+  //     client.send(number.toString());
+  //     setTimeout(sendNumber, 3000);
+  //   }
+  // }
+  // sendNumber();
 }
 
 client.onclose = function() {
@@ -121,9 +128,16 @@ client.onclose = function() {
 
 client.onmessage = function(e) {
   if (typeof e.data === 'string') {
-    console.log("Received: '" + e.data + "'");
-    console.log("show leaderboard");
-    showLeaderBoard();
+    let msg = e.data;
+    console.log("Received: '" + msg + "'");
+    if (msg.indexOf("UPDATE") >= 0) {
+      showLeaderBoard(); // update leaderboard
+      showInforMsg(msg); // show message
+    } else if (msg.indexOf("ADD") >= 0) {
+      showLeaderBoard(); // update leaderboard
+      showInforMsg(msg); // show message
+    }
   }
 }
+
 
