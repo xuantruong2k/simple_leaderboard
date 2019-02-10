@@ -127,15 +127,24 @@ client.onclose = function() {
 }
 
 client.onmessage = function(e) {
-  if (typeof e.data === 'string') {
-    let msg = e.data;
-    console.log("Received: '" + msg + "'");
-    if (msg.indexOf("UPDATE") >= 0) {
+
+  try {
+    var json = JSON.parse(e.data);
+  } catch (e) {
+    console.log('Invalid JSON: ', e.data);
+    return;
+  }
+
+  if (json.type == 'message') {
+    if (json.data.type == 'ADD' || json.data.type == 'UPDATE') {
+      let msg = '';
+      if (json.data.type == 'ADD')
+        msg = "<span style='color:red; background-color:yellow'><b>" + json.data.user + "</b> with score <b>" + json.data.score +"</b> has just added to leaderboard!</span>";
+      else // json.data.type == 'UPDATE'
+        msg = "<span style='color:black; background-color:cyan'><b>" + json.data.user + "</b> has updated his/her score <b>" + json.data.score + "</b></span>";
+
+      showInforMsg(msg); // show infor message
       showLeaderBoard(); // update leaderboard
-      showInforMsg(msg); // show message
-    } else if (msg.indexOf("ADD") >= 0) {
-      showLeaderBoard(); // update leaderboard
-      showInforMsg(msg); // show message
     }
   }
 }

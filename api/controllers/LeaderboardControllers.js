@@ -47,8 +47,13 @@ module.exports = {
       } else {
         res.json({message: 'Insert LOG success!'});
         // send message 2 client to inform about new updated
-        let msg = "UPDATE! <b>" + username + "</b> has updated his/her score <b>" + score + "</b>";
-        wsServer.sendMsg2Client(msg);
+        let obj = {
+          user: username,
+          score: score,
+          type: 'UPDATE',
+        }
+        let msg = JSON.stringify({type: 'message', data: obj});
+        wsServer.broadcast2All(msg);
 
       }
     });
@@ -68,8 +73,14 @@ module.exports = {
         console.log("" + err);
       } else {
         res.json({message: 'Insert success!'});
-        let msg = "ADD! <b>" + username + "</b> with score <b>" + score +"</b> has just added to leaderboard!";
-        wsServer.sendMsg2Client(msg);
+        // send message 2 client to inform about new updated
+        let obj = {
+          user: username,
+          score: score,
+          type: 'ADD',
+        };
+        let msg = JSON.stringify({type: 'message', data: obj});
+        wsServer.broadcast2All(msg);
       }
     });
   },

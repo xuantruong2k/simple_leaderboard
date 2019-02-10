@@ -25,6 +25,7 @@ function originIsAllowed(origin) {
 }
 
 let socketConn = null;
+let clients = [];
 
 wsServer.on('request', function(request) {
   if (!originIsAllowed(request.origin)) {
@@ -35,7 +36,8 @@ wsServer.on('request', function(request) {
   }
   
   socketConn = request.accept('echo-protocol', request.origin);
-  console.log((new Date()) + ' Connection accepted.');
+  let clientIdx = clients.push(socketConn) - 1;
+  console.log((new Date()) + ' Connection accepted.' + clientIdx);
   socketConn.on('message', function(message) {
     if (message.type === 'utf8') {
       console.log('Received Message: ' + message.utf8Data);
@@ -48,15 +50,16 @@ wsServer.on('request', function(request) {
   });
   socketConn.on('close', function(reasonCode, description) {
     console.log((new Date()) + ' Peer ' + socketConn.remoteAddress + ' disconnected.');
+    clients.splice(clientIdx, 1);
   });
 
 });
 
 
 module.exports = {
-  sendMsg2Client: function(msg) {
-    if (socketConn != null) {
-      socketConn.sendUTF(msg);
+  broadcast2All: function(msg) {
+    for (let i = 0; i < clients.length; i++) {
+      clients[i].sendUTF(msg);  
     }
   }
 };

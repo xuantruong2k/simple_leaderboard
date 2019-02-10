@@ -18,6 +18,14 @@
 ---
 **LOG CHANGES**
 
+> ## Update February 10th, 2019
+**Finish all tasks**
++ implement updates pushed to client from server
+
+**Need to improve**
++ Show error message to user when ADD an existed user to db
++ Show error message to user when UPDATE a non-existed user in db
+
 > ## Update February 8th, 2019
 **Tasks have NOT been finished**
 + 2. As a user I should be able to receive updates pushed to my screen when another user adds/updates their score.
