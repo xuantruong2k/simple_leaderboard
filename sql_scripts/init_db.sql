@@ -4,8 +4,9 @@ CREATE DATABASE simple_leaderboard;
 USE simple_leaderboard;
 
 -- create and grant permission to user which use to connect db
-CREATE USER 'test'@'%' IDENTIFIED BY 'p@ssword!';
-GRANT ALL PRIVILEGES ON simple_rest_api.* TO 'test'@'localhost';
+CREATE USER 'test_user'@'localhost' IDENTIFIED WITH mysql_native_password BY '';
+GRANT ALL PRIVILEGES ON simple_leaderboard.* TO 'test_user'@'localhost';
+FLUSH PRIVILEGES;
 
 -- create table
 CREATE TABLE `leaderboard` (
