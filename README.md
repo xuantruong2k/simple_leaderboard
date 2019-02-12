@@ -18,6 +18,12 @@
 ---
 **LOG CHANGES**
 
+> ## Update February 12th, 2019
+**Fix the authenication error when start server**
++ Please run hot fix sql script
+    > sql_scripts/hotfix_AUTH_MODE.sql
++ Then run the server again
+
 > ## Update February 10th, 2019
 **Finish all tasks**
 + implement updates pushed to client from server
